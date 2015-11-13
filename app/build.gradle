@@ -1,9 +1,16 @@
 apply plugin: 'com.android.application'
 
 android {
+    signingConfigs {
+        config {
+            keyAlias 'csdnkey'
+            keyPassword 'csdnkey'
+            storeFile file('key/csdn_release.jks')
+            storePassword 'csdn2015key'
+        }
+    }
     compileSdkVersion 23
     buildToolsVersion "23.0.2"
-
     defaultConfig {
         applicationId "com.jacksen.csdn"
         minSdkVersion 17
@@ -15,6 +22,15 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            shrinkResources true //移除无效的resource文件
+            zipAlignEnabled true
+            buildConfigField "boolean", "APP_TYPE", "true"
+            manifestPlaceholders = [APP_NAME: "@string/app_name_release"]
+            signingConfig signingConfigs.config
+        }
+        debug {
+            buildConfigField "boolean", "APP_TYPE", "false"
+            manifestPlaceholders = [APP_NAME: "@string/app_name_debug"]
         }
     }
 }
