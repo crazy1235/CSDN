@@ -28,6 +28,7 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -92,6 +93,14 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
         mLoginFormView = findViewById(R.id.login_form);
         mProgressView = findViewById(R.id.login_progress);
+
+
+        if (BuildConfig.APP_TYPE) {
+            Toast.makeText(this, "release", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(this, "debug", Toast.LENGTH_SHORT).show();
+        }
+
     }
 
     private void populateAutoComplete() {
