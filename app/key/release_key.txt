@@ -1,0 +1,7 @@
+jks 密码：	csdn2015key
+
+alias密码：	csdnkey
+
+MD5值：7D:28:F4:86:8C:11:A7:BA:82:E1:BE:B3:14:8C:3C:74
+
+SHA1值: 19:48:D8:4B:F9:A0:92:AB:95:A8:4F:38:1C:FF:EF:78:A0:FE:BD:EE
