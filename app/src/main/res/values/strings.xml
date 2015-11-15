@@ -1,5 +1,8 @@
 <resources>
-    <string name="app_name">demo</string>
+    <string name="app_name_debug">demo_debug</string>
+    <string name="app_name_release">demo_release</string>
+    <string name="app_name_flavor1">demo_flavor1</string>
+    <string name="app_name_flavor2">demo_flavor2</string>
     
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
