@@ -28,7 +28,7 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            shrinkResources true //移除无效的resource文件
+            shrinkResources true //移除无效的resource文件，必须允许ProGuard才能生效
             zipAlignEnabled true
             buildConfigField "boolean", "APP_TYPE", "true"
             manifestPlaceholders = [APP_NAME: "@string/app_name_release"]
@@ -56,6 +56,26 @@ android {
             versionName '1.2'
             manifestPlaceholders = [APP_NAME: "@string/app_name_flavor2"]
         }
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+
+    productFlavors.all {
+        flavor -> flavor.manifestPlaceholders = [APP_NAME: "flavor"]
+    }
+
+    applicationVariants.all {
+        variant ->
+            variant.outputs.each {
+                output ->
+                    def outputFile = output.outputFile
+                    if (outputFile != null && outputFile.name.endsWith('.apk')) {
+                        def fileName = outputFile.name.replace(".apk", "-${defaultConfig.versionName}.apk")
+                        output.outputFile = new File(outputFile.parent, fileName)
+                    }
+            }
     }
 }
 
