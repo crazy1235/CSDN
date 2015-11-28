@@ -103,6 +103,14 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             Toast.makeText(this, "debug", Toast.LENGTH_SHORT).show();
         }
 
+        init();
+    }
+
+    /**
+     *
+     */
+    private void init(){
+
     }
 
     private void populateAutoComplete() {
